@@ -3,9 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home";
 import Root from "./routes/Root";
 import Products from './routes/Products';
-import Product from './routes/Product';
+import ProductSingle from './routes/ProductSingle';
 import About from './routes/About';
 import Cart from './routes/Cart';
+import Not_found_404 from './routes/Not_found_404';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 function App() {
   const router = createBrowserRouter([
@@ -31,13 +34,21 @@ function App() {
         },
         {
           path: "/products/:id",
-          element: <Product />
+          element: <ProductSingle />
+        },
+        {
+          path: "*",
+          element: <Not_found_404 />
         }
       ],
     },
   ]);
 
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
+  );
 }
 
 export default App;
