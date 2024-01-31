@@ -18,7 +18,7 @@ const cartSlice = createSlice({
     extraReducers: (builder) => { },
 })
 
-// This is should be used for reducers NOT extraReducers
+// This should be used for reducers NOT extraReducers
 export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer
